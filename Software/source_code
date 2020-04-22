@@ -2,9 +2,13 @@
 #include "ui_smartmirrorfinal.h"
 #include<QTimer>
 #include<QTime>
+
+
 SmartMirrorFinal::SmartMirrorFinal(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::SmartMirrorFinal)
+
+
 {
     ui->setupUi(this);
     SmartMirrorFinal::showFullScreen();  ///at startup switch to full screen//
@@ -12,7 +16,13 @@ SmartMirrorFinal::SmartMirrorFinal(QWidget *parent) :
     connect(timer, &QTimer::timeout, this, &SmartMirrorFinal::updateTime);
     timer->start(1000); //get sstem time and update in text label on ui//
 }
+
+
+
 void SmartMirrorFinal::updateTime()
+
+
+
 {
     QTime time = QTime::currentTime();
     QString text = time.toString("hh:mm AP"); //Format time AM/PM
@@ -23,6 +33,7 @@ void SmartMirrorFinal::updateTime()
       ui->label_msg->setText("you look good");
   }else if(time.minute()3%==0){
       ui->label_msg->setText("Have a  nice day");
+
 }
 
 SmartMirrorFinal::~SmartMirrorFinal()
