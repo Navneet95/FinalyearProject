@@ -1,25 +1,25 @@
-#include "smartmirrorfinal.h"
-#include "ui_smartmirrorfinal.h"
+#include "ui_mainwindow.h"
+#include "Mainwindow.h"
 #include<QTimer>
 #include<QTime>
 
 
-SmartMirrorFinal::SmartMirrorFinal(QWidget *parent) :
+Mainwindow::Mainwindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::SmartMirrorFinal)
+    ui(new Ui::MainWindow)
 
 
 {
     ui->setupUi(this);
-    SmartMirrorFinal::showFullScreen();  ///at startup switch to full screen//
+    QMainWindow::showFullScreen();  ///at startup switch to full screen//
     QTimer *timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &SmartMirrorFinal::updateTime);
+    connect(timer, &QTimer::timeout, this, & MainWindow::showTime);
     timer->start(1000); //get sstem time and update in text label on ui//
 }
 
 
 
-void SmartMirrorFinal::updateTime()
+void MainWindow::updateTime()
 
 
 
@@ -36,7 +36,7 @@ void SmartMirrorFinal::updateTime()
 
 }
 
-SmartMirrorFinal::~SmartMirrorFinal()
+ MainWindow::~ MainWindow()
 {
     delete ui;
 }
