@@ -19,6 +19,11 @@ public:
 
 private:
     Ui::SmartMirrorFinal *ui;
+    QMqttClient *m_client;
+private slots:
+    void showTime();
+    void StateChange();
+    void updateMessage(const QMqttMessage &msg);
 };
 
 #endif // SMARTMIRRORFINAL_H
