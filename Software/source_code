@@ -21,8 +21,17 @@ Mainwindow::Mainwindow(QWidget *parent) :
     connect(timer, &QTimer::timeout, this, & MainWindow::showTime);
     timer->start(1000); //get sstem time and update in text label on ui//
 }
-
-
+void MainWindow::StateChange()
+{
+   QString topic="note1";
+   auto m_sub = m_client->subscribe(topic,1);
+   ui->label_note1->setText("Connected");
+   connect(m_sub, &QMqttSubscribtion::messageReceived, this,&MainWindow::updateMessage);
+}
+void MainWindow::updateMessage(const QMqttMessage &msg)
+{
+ ui->label_note1->setText(msg.payload());
+}
 
 void MainWindow::updateTime()t
 
