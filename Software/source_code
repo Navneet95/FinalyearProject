@@ -12,6 +12,11 @@ Mainwindow::Mainwindow(QWidget *parent) :
 {
     ui->setupUi(this);
     QMainWindow::showFullScreen();  ///at startup switch to full screen//
+    m_client = new QMqttClient(this);
+    m_client->setHostname("test.mosquitto.org")
+    m_client->setPort(1883);
+    connect(m_client, &QMqttClient::stateChanged, this, &MainWindow::StateChange);
+    m_client->connectToHost);
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, & MainWindow::showTime);
     timer->start(1000); //get sstem time and update in text label on ui//
@@ -19,9 +24,7 @@ Mainwindow::Mainwindow(QWidget *parent) :
 
 
 
-void MainWindow::updateTime()
-
-
+void MainWindow::updateTime()t
 
 {
     QTime time = QTime::currentTime();
